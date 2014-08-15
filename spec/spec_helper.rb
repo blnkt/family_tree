@@ -8,5 +8,11 @@ ActiveRecord::Base.establish_connection(test_configuration)
 
 RSpec.configure do |config|
   config.after(:each) do
+    Person.all.each do |person|
+      person.destroy
+    end
+    Relationship.all.each do |relationship|
+      relationship.destroy
+    end
   end
 end

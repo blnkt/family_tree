@@ -4,4 +4,8 @@ class CreatePeople < ActiveRecord::Migration
       t.column :name, :string
     end
   end
+
+  def change
+    remove_column :people, :spouse_id, :integer
+  end
 end

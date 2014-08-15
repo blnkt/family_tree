@@ -1,5 +1,9 @@
 class Person < ActiveRecord::Base
-  validates :name, :presence => true
+  validates :first_name, :last_name, :presence => true
+
+  has_many :relationships, class_name: 'Relationship', foreign_key: 'person_id'
+  has_many :parents, through: :relationships
+  has_many :children, through: :relationships
 
   after_save :make_marriage_reciprocal
 
